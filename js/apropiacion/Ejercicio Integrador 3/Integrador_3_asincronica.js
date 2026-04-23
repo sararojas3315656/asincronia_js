@@ -1,22 +1,17 @@
 /*Ejercicio integrador 3:
 Simulador de Consulta de Usuarios y Roles
-
 Descripción general
-
 Vamos a simular una aplicación que debe consultar información desde diferentes fuentes:
 • Datos básicos del usuario
 • Información de seguridad
 • Roles y permisos
 Algunas consultas son lentas y otras rápidas. El propósito es reconstruir el flujo completo,
 validar que la aplicación no se bloquee y comprender el orden real de los resultados.
-
 Requerimientos del programa
-
 Datos de entrada
 • Un arreglo de IDs de usuarios:
 const usuarios = [101, 102, 103, 104];
 • Tiempos simulados:
-
 • Consulta de usuario: 1200 ms
 • Consulta de seguridad: 800 ms
 • Consulta de roles: 2000 ms
@@ -43,10 +38,7 @@ o Documentar por qué no sirve este enfoque.
 o Consultar usuario → consultar seguridad → consultar roles → registrar.
 o Este flujo debe ejecutarse de forma secuencial para cada usuario, pero en paralelo
 entre usuarios.
-
 3. Versión final con Async/Await:
 o Implementar la misma lógica usando async/await.
 o Registrar tiempos reales con Date.now().
-o Contrastar con la ejecución basada en promesas.
-
-*/
+o Contrastar con la ejecución basada en promesas.*/
