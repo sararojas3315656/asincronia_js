@@ -3,6 +3,7 @@
 import * as ejercicios from "./js/index.js";
 import promptSync from "prompt-sync";
 
+import { validarFormulario } from "./index.js";
 const prompt = promptSync({ sigint: true });
 
 async function menu() {
