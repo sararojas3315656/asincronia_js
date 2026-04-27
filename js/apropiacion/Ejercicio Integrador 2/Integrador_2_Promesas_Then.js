@@ -30,21 +30,10 @@ o Identificación de procesos paralelos y procesos secuenciales
 • Un reporte final indicando qué órdenes se completaron y en qué tiempos.
 
 Tareas
-1. Primera parte (Callbacks):
-o Implementar el flujo completo de una sola orden usando callbacks.
-o Analizar el tiempo total.
-o Identificar visualmente el “callback hell” y documentarlo.
-
-2. Segunda parte (Promesas + then):
+- (Promesas + then):
 o Reescribir el mismo proceso usando promesas.
 o Validar si la estructura se vuelve más clara.
 o Registrar tiempos.
-
-3. Tercera parte (Async/Await):
-o Implementar el procesamiento de todas las órdenes con async/await.
-o Procesarlas en serie (una detrás de otra).
-o Luego procesarlas en paralelo (todas a la vez).
-o Comparar tiempos y justificar la diferencia.
 
 Objetivos de análisis
 Se requiere analizar los siguientes puntos:

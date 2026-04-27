@@ -5,6 +5,8 @@ import promptSync from "prompt-sync";
 
 const prompt = promptSync({ sigint: true });
 
+import { procesarOrdenCallback } from "./index.js";
+
 async function menu() {
   while (true) {
     console.log("\n===== MENÚ =====");
