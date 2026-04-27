@@ -10,9 +10,9 @@ async function menu() {
     console.log("\n===== MENÚ =====");
     console.log("6. Ejercicio 6 - Proceso aleatorio");
     console.log("7. Ejercicio 7 - Async/Await");
+    console.log("8. Ejercicio Integrador 3 - Versión bloqueante");
+    console.log("0. Salir");    
     /* Mostrar ejercicios en consola aqui:*/
-
-    console.log("0. Salir");
 
     const opcion = prompt("Elige una opción: ").trim();
 
@@ -23,6 +23,10 @@ async function menu() {
 
       case "7":
         await ejercicios.ejecutarAsync();
+        break;
+
+        case "8":
+        await ejercicios.versionBloqueante();
         break;
 
         /* introducir siguientes ejercicios aqui con este formato:
