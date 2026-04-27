@@ -4,3 +4,9 @@ Escribe un código que imprima “Inicio”, luego una operación con setTimeout
 y finalmente “Fin”.
 Meta: que reconozcan el orden real de ejecución. */
 
+console.log("Inicio");
+
+setTimeout(function() {
+}, 2000);
+
+console.log("Fin");
