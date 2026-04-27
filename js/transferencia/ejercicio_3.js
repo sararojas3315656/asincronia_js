@@ -18,3 +18,55 @@ Datos de salida
 • Estado individual de cada validación.
 • Resultado final: “Formulario validado” o “Validación fallida”.
 • Tiempo total del proceso.*/
+
+
+const usuario = {
+    correo: "sararojas@gmail.com",
+    documento: "1097783999",
+    nombre: "Sara rojas"
+};
+
+function validarCorreo() {
+    return new Promise(function(resolve) {
+        setTimeout(function() { resolve("Correo validado."); }, 2000);
+    });
+}
+
+function validarDocumento() {
+    return new Promise(function(resolve) {
+        setTimeout(function() { resolve("Documento validado"); }, 2000);
+    });
+}
+
+function validarDisponibilidad() {
+    return new Promise(function(resolve) {
+        setTimeout(function() { resolve("Disponibilidad validada"); }, 3000);
+    });
+}
+
+async function validarFormulario() {
+    const inicio = Date.now();
+    console.log("Inicio");
+
+    try {
+        const resultados = await Promise.all([
+            validarCorreo(),
+            validarDocumento(),
+            validarDisponibilidad()
+        ]);
+
+        resultados.forEach(function(r) { console.log(r); });
+        console.log("Formulario validado");
+
+    } catch(error) {
+        console.log("Validacion fallida: " + error);
+    }
+
+    console.log("Tiempo total: " + (Date.now() - inicio) + "ms");
+}
+
+export { validarFormulario };
+
+validarFormulario();
+
+//promise all para correr en paralelo a las 3 validaciones que corren independientes 
