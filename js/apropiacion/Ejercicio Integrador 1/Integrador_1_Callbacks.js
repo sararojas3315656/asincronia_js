@@ -43,33 +43,28 @@ setTimeout (finalizar, 2500); */
 
 //Debido a esto, he realizado un código que anida todas las funciones para que se ejecuten después de que se haya finalizado cada una y sería de esta manera:
 
-console.log("Inicio");
+function consultaUsuario() {
+    console.log("Inicio");
 
-setTimeout(function() {
-    console.log("Usuario encontrado");
-    
     setTimeout(function() {
-        console.log("Permisos aprobados");
-        
+        console.log("Usuario encontrado");
+
         setTimeout(function() {
-            console.log("Reporte generado");
-            
+            console.log("Permisos aprobados");
+
             setTimeout(function() {
-                console.log("Fin");
+                console.log("Reporte generado");
+
+                setTimeout(function() {
+                    console.log("Fin");
+                }, 1000);
+
             }, 1000);
-            
-        }, 1000);
-        
-    }, 2000);
-    
-}, 1000);
 
-export { consultaUsuario }; //Barril
+        }, 2000);
 
+    }, 1000);
+}
 
-/* Barril: 
-Integrador_1_Callbacks.js  →  exportar función
-        ↓
-    index.js               →  re-exportar todo 
-        ↓
-    app.js                 →  importar y ejecutar
+export { consultaUsuario };
+consultaUsuario();
