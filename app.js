@@ -9,6 +9,7 @@ async function menu() {
   while (true) {
     console.log("\n===== MENÚ =====");
     console.log("6. Ejercicio 6 - Proceso aleatorio");
+    console.log("7. Ejercicio 7 - Async/Await");
     /* Mostrar ejercicios en consola aqui:*/
 
     console.log("0. Salir");
@@ -18,6 +19,10 @@ async function menu() {
     switch (opcion) {
       case "6":
         await ejercicios.ejecutarProceso();
+        break;
+
+      case "7":
+        await ejercicios.ejecutarAsync();
         break;
 
         /* introducir siguientes ejercicios aqui con este formato:
