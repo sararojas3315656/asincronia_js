@@ -4,9 +4,16 @@ Crea un ciclo muy grande (por ejemplo, uno que cuente hasta millones) y observa 
 ejecución del programa.
 Meta: evidenciar cómo una tarea pesada bloquea el hilo principal.*/
 
+function ejercicio2() {
 console.log("Inicio");
 
 for (let i = 0; i < 100_000_000_000; i++) {
 }
 
 console.log("Fin");
+
+}
+
+export { ejercicio2 };
+
+ejercicio2();

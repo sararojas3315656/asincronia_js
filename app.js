@@ -2,6 +2,7 @@
 
 import * as ejercicios from "./js/index.js";
 import promptSync from "prompt-sync";
+import { ejercicio2 } from "./index.js";
 
 const prompt = promptSync({ sigint: true });
 
