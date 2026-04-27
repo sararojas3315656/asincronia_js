@@ -104,3 +104,36 @@ procesarOrdenCallback(Aleatorio); ... es lo mismo que en python jaja, solo que s
 
 /* A pesar de usar el ordencallback 0, que hace que solo ejecute la orden de Ana,
  pongo el @ al final de cada palabra para que cuente ambos bandos y no sea solo una declaración femenina o masculina */
+
+/* Por qué la versión sincrónica bloquearía todo?
+Si fuera síncronas, tendría que esperar que cada una terminara antes de hacer cualquier otra cosa. 
+Durante esos 5000ms el programa estaría congelado.
+Con callbacks, se registra la tarea y sigue libre mientras espera. */
+
+/*¿Qué tareas pueden correr en paralelo?
+Todas las tareas pueden corren en paralelo ya que una depende de la anterior.
+Las 3 órdenes (Ana, Luis, Maria), no dependen entre sí, puede que alguna de las tres estar en verificación 
+y mientras la otra orden va a estar en procesamiento. */
+
+/*Tiempos reales vs teóricos    
+Paso              tiempo teórico
+Verificación         1500ms
+Procesamiento        2000ms
+Registro             1000ms
+Notificación         500ms
+Total                5000ms */
+
+/* ¿Cómo ordena el event loop la ejecución?
+
+Ejecuta "Inicio" al principio de todo de manera inmediata
+Encuentra el 'setTimeout' de 'verificar' y lo manda a espera
+Cuando pasan 1500ms regresa a la cola de ejecución
+Ejecuta 'verificar', encuentra el siguiente 'setTimeout' y lo manda a espera
+Y así hasta que finaliza.
+
+El event loop no se bloquea. */
+
+/* ¿Cuándo usar cada técnica en problemas reales?
+- Callbacks: código simple, una operación asíncrona, compatibilidad con diversos códigos
+- Promesas: varias operaciones encadenadas, necesitas .catch() centralizado
+- Async/Await: flujos complejos, múltiples operaciones, código que necesita ser fácil de mantener */

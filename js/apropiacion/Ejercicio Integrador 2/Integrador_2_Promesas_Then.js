@@ -111,3 +111,36 @@ function procesarOrden(orden) {
 export { procesarOrden };
 
 procesarOrden(ordenes[0]);
+
+//Según la tarea, si se vuelve más claro de esta manera y más ordenado ya que se anida a la derecha y no hacia abajo
+
+/*Por qué la versión sincrónica bloquearía todo?
+Tendría que esperar que termine cada tarea antes de seguir con la otra. Durante esos 5000ms el programa estaría 
+estático, sin poder responder más tareas. 
+Con promesas, se registra la tarea y sigue con otras tareas mientras espera, sin interrumpir. */
+
+/*¿Qué tareas pueden correr en paralelo?
+Todas las tareas pueden corren en secuencia ya que una depende de la anterior.
+Pero si tuvieras que procesar las 3 órdenes (Ana, Luis, Maria), esas 3 sí podrían correr en paralelo porque no 
+dependen entre sí, Ana puede estar en verificación mientras Luis está en procesamiento. */
+
+/*Tiempos reales vs teóricos    
+Paso              tiempo teórico
+Verificación         1500ms
+Procesamiento        2000ms
+Registro             1000ms
+Notificación         500ms
+Total                5000ms */
+
+/* ¿Cómo ordena el event loop la ejecución?
+
+Ejecuta "Inicio" al principio de todo de manera inmediata
+Encuentra el 'setTimeout' de 'verificar' y lo manda a espera
+Cuando pasan 1500ms regresa a la cola de ejecución
+Ejecuta 'verificar', encuentra el siguiente 'setTimeout' y lo manda a espera
+Y así hasta que finaliza. */
+
+/* ¿Cuándo usar cada técnica en problemas reales?
+- Callbacks: código simple, una operación asíncrona, compatibilidad con diversos códigos
+- Promesas: varias operaciones encadenadas, necesitas .catch() centralizado
+- Async/Await: flujos complejos, múltiples operaciones, código que necesita ser fácil de mantener */
