@@ -3,6 +3,11 @@ import * as ejercicios from "./js/index.js";
 import promptSync from "prompt-sync";
 const prompt = promptSync({ sigint: true });
 
+import { processOrden } from "./index.js";
+import { procesarOrden } from "./index.js";
+
+procesarOrdenPromesa(ordenes[0]);
+
 async function menu() {
   while (true) {
     console.log("\n===== MENÚ =====");
@@ -51,3 +56,4 @@ async function menu() {
 }
 
 menu();
+
