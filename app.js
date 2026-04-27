@@ -6,6 +6,10 @@ import { consultaUsuario } from "./index.js";
 
 consultaUsuario();
 
+import { consultaUsuario } from "./index.js";
+
+consultaUsuario();
+
 const prompt = promptSync({ sigint: true });
 
 async function menu() {

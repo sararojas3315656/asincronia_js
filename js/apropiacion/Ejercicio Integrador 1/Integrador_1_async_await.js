@@ -41,6 +41,8 @@ async function consultaUsuario() {
     console.log("Fin");
 }
 
+export { consultaUsuario };
+
 consultaUsuario();
 
 /* Vi que el uso de setTimeout no funciona por si solo en el async await ya que el await solo pausa
@@ -51,4 +53,4 @@ promesas y el timeout no es promesa sino función. Para usar un timeout hay dos 
 
  //Ventaja: Código limpio, manejo de errores sencillo (try catch), escala
  //Desventaja: Si olvidas un await va a dar errores algo dificiles de detectar, no funciona en algunos browsers/nodes 
- //Comparación con los otros metodos: Callback es más sencillo, pero Async await es más ordenado.
+ //Comparación con los otros metodos: Callback es más sencillo, pero Async await es más ordenado
