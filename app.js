@@ -2,6 +2,9 @@
 
 import * as ejercicios from "./js/index.js";
 import promptSync from "prompt-sync";
+import { consultaUsuario } from "./index.js";
+
+consultaUsuario();
 
 const prompt = promptSync({ sigint: true });
 
@@ -37,3 +40,4 @@ async function menu() {
 }
 
 menu();
+
