@@ -19,3 +19,61 @@ Datos de salida
 • Resultados individuales.
 • Flujo real de ejecución.
 • Factura generada o error del sistema.*/
+
+
+const pedido = { id: 101 };
+
+function validarStock() {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            console.log("Stock validado");
+            resolve();
+        }, 1000);
+    });
+}
+
+function calcularCostos() {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            console.log("Costos calculados");
+            resolve();
+        }, 1500);
+    });
+}
+
+function generarRecomendaciones() {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            console.log("Recomendaciones generadas");
+            resolve();
+        }, 2000);
+    });
+}
+
+function enviarFactura() {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            console.log("Factura enviada");
+            resolve();
+        }, 1000);
+    });
+}
+
+async function procesarPedido() {
+    console.log("Inicio pedido " + pedido.id);
+
+    await validarStock();
+    await calcularCostos();
+
+    await Promise.all([enviarFactura(), generarRecomendaciones()]);
+
+    console.log("Pedido completado");
+}
+
+export { procesarPedido };
+
+procesarPedido();
+
+/* Por qué async-await? Porque el flujo tiene dependencias claras, unos pasos 
+necesitan que otros terminen primero. EL usar async await ayuda a que el código se lea de arriba a abajo,
+facilitando ver el orden real de ejecución.*/
