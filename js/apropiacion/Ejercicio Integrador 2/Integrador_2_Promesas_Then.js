@@ -43,3 +43,71 @@ Se requiere analizar los siguientes puntos:
 • Explicar cómo el event loop ordena la ejecución.
 • Reconocer cuándo usar callbacks, promesas o async/await para problemas reales.
 */
+
+
+const ordenes = [
+    { id: 1, cliente: "Ana", monto: 120000 },
+    { id: 2, cliente: "Luis", monto: 80000 },
+    { id: 3, cliente: "Maria", monto: 150000 }
+];
+
+function verificar(orden) {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            console.log("Orden " + orden.id + " - " + orden.cliente + ": Verificad@");
+            resolve(orden);
+        }, 1500);
+    });
+}
+
+function procesar(orden) {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            console.log("Orden " + orden.id + " - " + orden.cliente + ": Procesad@");
+            resolve(orden);
+        }, 2000);
+    });
+}
+
+function registrar(orden) {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            console.log("Orden " + orden.id + " - " + orden.cliente + ": Registrad@");
+            resolve(orden);
+        }, 1000);
+    });
+}
+
+function notificar(orden) {
+    return new Promise(function(resolve) {
+        setTimeout(function() {
+            console.log("Orden " + orden.id + " - " + orden.cliente + ": Notificad@");
+            resolve(orden);
+        }, 500);
+    });
+}
+
+function procesarOrden(orden) {
+    const inicio = Date.now();
+    console.log("Inicio: " + orden.id + " - " + orden.cliente);
+
+    verificar(orden)
+        .then(function(orden) {
+            return procesar(orden);
+        })
+        .then(function(orden) {
+            return registrar(orden);
+        })
+        .then(function(orden) {
+            return notificar(orden);
+        })
+        .then(function(orden) {
+            const fin = Date.now();
+            console.log("Fin." + " - Tiempo total: " + (fin - inicio) + "ms");
+        });
+}
+
+
+export { procesarOrden };
+
+procesarOrden(ordenes[0]);

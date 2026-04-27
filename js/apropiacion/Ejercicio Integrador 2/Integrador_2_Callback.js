@@ -35,17 +35,6 @@ o Implementar el flujo completo de una sola orden usando callbacks.
 o Analizar el tiempo total.
 o Identificar visualmente el “callback hell” y documentarlo.
 
-2. Segunda parte (Promesas + then):
-o Reescribir el mismo proceso usando promesas.
-o Validar si la estructura se vuelve más clara.
-o Registrar tiempos.
-
-3. Tercera parte (Async/Await):
-o Implementar el procesamiento de todas las órdenes con async/await.
-o Procesarlas en serie (una detrás de otra).
-o Luego procesarlas en paralelo (todas a la vez).
-o Comparar tiempos y justificar la diferencia.
-
 Objetivos de análisis
 Se requiere analizar los siguientes puntos:
 • Explicar por qué la versión sincrónica (si existiera) bloquearía todo.
@@ -90,24 +79,25 @@ function notificar(orden, callback) {
     }, 500);
 }
 
-function procesarOrdenCallback(orden) {
-    console.log("Inicio orden " + orden.id + " - " + orden.cliente);
+function processOrden(orden) {
+    const inicio = Date.now();
+    console.log("Inicio." + orden.id + " - " + orden.cliente);
 
     verificar(orden, function() {
         procesar(orden, function() {
             registrar(orden, function() {
                 notificar(orden, function() {
-                    console.log("Fin orden " + orden.id + " - " + orden.cliente);
+                    const fin = Date.now();
+                    console.log("Fin." + " - Tiempo total: " + (fin - inicio) + "ms");
                 });
             });
         });
     });
 }
 
-procesarOrdenCallback(ordenes[0]);
+export { processOrden };
 
-export { procesarOrdenCallback };
-
+processOrden(ordenes[0]);
 //Solo se procesó la orden de Ana pues solo pide 1, por eso pongo el 0. Si se quiere en aleatorio entonces es:
 /* const Aleatorio = ordenes[Math.floor(Math.random() * ordenes.length)];
 procesarOrdenCallback(Aleatorio); ... es lo mismo que en python jaja, solo que sin el import random y random.choice pero se entiende igual ¿*/

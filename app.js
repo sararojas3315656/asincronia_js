@@ -5,7 +5,10 @@ import promptSync from "prompt-sync";
 
 const prompt = promptSync({ sigint: true });
 
-import { procesarOrdenCallback } from "./index.js";
+import { processOrden } from "./index.js";
+import { procesarOrden } from "./index.js";
+
+procesarOrdenPromesa(ordenes[0]);
 
 async function menu() {
   while (true) {
